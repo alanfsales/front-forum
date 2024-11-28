@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#" data-target="cadastro-curso">Cursos</a></li>
+                <li><a href="#" data-target="perfil">Perfil</a></li>
+                <li><a href="#" data-target="usuarios">Usuários</a></li>
+                <li><a href="#" data-target="topico">Tópicos</a></li>
+                <li><a href="#" data-target="resposta">Respostas</a></li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <main class="content">
+            <header>
+                <h1>Bem-vindo à Dashboard</h1>
+                <div class="user-info">
+                    <span id="user-name">Usuário</span>
+                    <button id="logoutBtn">Sair</button>
+                </div>
+            </header>
+
+            <!-- Seções dinâmicas -->
+            <section id="cadastro-curso" class="hidden">
+                <h2>Cadastro de Curso</h2>
+                <form id="form-cadastro-curso">
+                    <!-- Campo para o nome do curso -->
+                    <label for="course-name">Nome do Curso:</label>
+                    <input type="text" id="course-name" placeholder="Digite o nome do curso" required>
+            
+                    <!-- Campo para a categoria -->
+                    <label for="course-category">Categoria:</label>
+                    <select id="course-category" required>
+                        <option value="" disabled selected>Selecione a categoria</option>
+                        <option value="Programação">Programação</option>
+                        <option value="Banco de Dados">Banco de Dados</option>
+                        <option value="Desenvolvimento Pessoal">Desenvolvimento Pessoal</option>
+                    </select>
+            
+                    <!-- Botão para salvar -->
+                    <button type="submit" id="btn-salvar-curso">Salvar</button>
+                </form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Alterar</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cursos-lista">
+                        <!-- Os cursos serão inseridos aqui dinamicamente -->
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="perfil" class="hidden">
+                <h2>Perfil</h2>
+                <p>Informações do perfil do usuário.</p>
+            </section>
+
+            <section id="usuarios" class="hidden">
+                <h2>Usuários</h2>
+                <p>Gerenciamento de usuários.</p>
+            </section>
+
+            <section id="topico" class="hidden">
+                <h2>Tópico</h2>
+                <p>Gerenciamento de tópicos do fórum.</p>
+            </section>
+
+            <section id="resposta" class="hidden">
+                <h2>Resposta</h2>
+                <p>Gerenciamento de respostas dos tópicos.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
