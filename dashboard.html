@@ -32,24 +32,43 @@
 
             <!-- Seções dinâmicas -->
             <section id="cadastro-curso" class="hidden">
-                <h2>Cadastro de Curso</h2>
-                <form id="form-cadastro-curso">
+                <h2>Cadastro de Cursos</h2>
+                <form id="form-cadastro-curso" class="form-inline">
                     <!-- Campo para o nome do curso -->
-                    <label for="course-name">Nome do Curso:</label>
-                    <input type="text" id="course-name" placeholder="Digite o nome do curso" required>
-            
+                    <div class="form-group">
+                        <label for="course-name">Nome do Curso:</label>
+                        <input type="text" id="course-name" placeholder="Digite o nome do curso" required>
+                    </div>
+                
                     <!-- Campo para a categoria -->
-                    <label for="course-category">Categoria:</label>
-                    <select id="course-category" required>
-                        <option value="" disabled selected>Selecione a categoria</option>
+                    <div class="form-group">
+                        <label for="course-category">Categoria:</label>
+                        <select id="course-category" required>
+                            <option value="" disabled selected>Selecione a categoria</option>
+                            <option value="Programação">Programação</option>
+                            <option value="Banco de Dados">Banco de Dados</option>
+                            <option value="Desenvolvimento Pessoal">Desenvolvimento Pessoal</option>
+                        </select>
+                    </div>
+                
+                    <!-- Botão para salvar -->
+                    <button type="submit" id="btn-salvar-curso">Salvar</button>
+                </form>
+                <!-- Campo de busca -->
+                <div class="search-container">
+                    <label for="search-name">Buscar por Nome:</label>
+                    <input type="text" id="search-name" placeholder="Digite o nome para buscar">
+                    
+                    <label for="search-category">Buscar por Categoria:</label>
+                    <select id="search-category">
+                        <option value="" selected>Todas</option>
                         <option value="Programação">Programação</option>
                         <option value="Banco de Dados">Banco de Dados</option>
                         <option value="Desenvolvimento Pessoal">Desenvolvimento Pessoal</option>
                     </select>
-            
-                    <!-- Botão para salvar -->
-                    <button type="submit" id="btn-salvar-curso">Salvar</button>
-                </form>
+                    
+                    <button id="btn-search-curso">Buscar</button>
+                </div>
                 <table>
                     <thead>
                         <tr>

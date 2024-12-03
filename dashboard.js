@@ -1,13 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Verifica se o token existe no localStorage
-    const token = localStorage.getItem("authToken");
-
-    if (!token) {
-        // Se não houver token, redireciona para a página de login
-        alert("Você precisa fazer login para acessar o dashboard.");
-        window.location.href = "index.html";
-        return;
-    }
+    const validarToken = () => {
+        const token = localStorage.getItem("authToken");
+    
+        if (!token) {
+            alert("Acesso negado. Você precisa fazer login.");
+            window.location.href = "index.html"; // Redireciona para a página de login
+            return false;
+        }
+    
+        try {
+            const payloadBase64 = token.split(".")[1];
+            const payload = JSON.parse(atob(payloadBase64)); // Decodifica o payload do JWT
+    
+            // Verifica se o token expirou
+            const agora = Math.floor(Date.now() / 1000); // Tempo atual em segundos
+            if (payload.exp && payload.exp < agora) {
+                alert("Sua sessão expirou. Faça login novamente.");
+                localStorage.removeItem("authToken");
+                window.location.href = "index.html";
+                return false;
+            }
+        } catch (error) {
+            console.error("Erro ao validar o token:", error);
+            alert("Token inválido. Faça login novamente.");
+            localStorage.removeItem("authToken");
+            window.location.href = "index.html";
+            return false;
+        }
+    
+        return true;
+    };
+    
+    // Chama a validação ao carregar a página
+    validarToken();
 
     // Token existe, continua a configuração da página
     const menuItems = document.querySelectorAll(".sidebar a");
@@ -226,6 +252,35 @@ const exibirNomeUsuario = () => {
 
 // Chama a função ao carregar a página
 exibirNomeUsuario();
+
+// Função para buscar cursos por nome e categoria
+const buscarCursos = () => {
+    const searchInput = document.getElementById("search-name").value.toLowerCase();
+    const searchCategory = document.getElementById("search-category").value;
+    const cursosTabela = document.querySelectorAll("#cursos-lista tr");
+
+    // Iterar pelos cursos na tabela e aplicar os filtros
+    cursosTabela.forEach((linha) => {
+        const nomeCurso = linha.querySelector("td:nth-child(2)").textContent.toLowerCase(); // Nome está na 2ª coluna
+        const categoriaCurso = linha.querySelector("td:nth-child(3)").textContent; // Categoria está na 3ª coluna
+
+        // Verifica se o nome e categoria correspondem aos filtros
+        const nomeMatch = nomeCurso.includes(searchInput);
+        const categoriaMatch = searchCategory === "" || categoriaCurso === searchCategory;
+
+        if (nomeMatch && categoriaMatch) {
+            linha.style.display = ""; // Mostrar a linha
+        } else {
+            linha.style.display = "none"; // Ocultar a linha
+        }
+    });
+};
+
+// Adicionar evento ao botão de busca
+document.getElementById("btn-search-curso").addEventListener("click", (e) => {
+    e.preventDefault(); // Previne o comportamento padrão do botão
+    buscarCursos();
+});
 
 
 

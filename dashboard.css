@@ -128,8 +128,8 @@ section p {
     display: none;
 }
 
-/* Estilo para o formulário de cadastro */
-form {
+/* Estilo para formulários genéricos */
+form:not(#form-cadastro-curso) {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -137,28 +137,50 @@ form {
     margin: 0 auto;
 }
 
-/* Estilo para os campos de entrada e lista */
-input[type="text"], select {
-    padding: 10px;
-    font-size: 16px;
+/* Estilo para o formulário de cadastro */
+#form-cadastro-curso {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Permite quebra de linha em telas menores */
+}
+
+#form-cadastro-curso .form-group {
+    display: flex;
+    align-items: center; /* Alinha o label e o input na mesma linha */
+    gap: 10px; /* Espaço entre o label e o input */
+}
+
+/* Ajusta o tamanho dos labels */
+#form-cadastro-curso label {
+    font-weight: bold;
+    font-size: 14px;
+    width: 120px; /* Define uma largura fixa para os labels */
+    text-align: left; /* Alinha o texto à direita */
+}
+
+/* Ajusta o tamanho dos inputs */
+#form-cadastro-curso input,
+#form-cadastro-curso select {
+    padding: 8px;
+    font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%;
+    width: 200px; /* Define largura dos campos */
 }
 
 /* Estilo para o botão */
-button[type="submit"] {
-    padding: 10px 15px;
-    font-size: 16px;
+#form-cadastro-curso button {
+    padding: 10px 20px;
+    font-size: 14px;
     color: white;
     background-color: #007bff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
+#form-cadastro-curso button:hover {
     background-color: #0056b3;
 }
 
@@ -227,5 +249,40 @@ table button:hover {
     color: #333;
 }
 
+/* Estilo para o formulário de busca */
+.search-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+}
 
+.search-container label {
+    font-size: 14px;
+    font-weight: bold;
+}
 
+.search-container input, 
+.search-container select {
+    padding: 8px;
+    font-size: 14px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.search-container button {
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-container button:hover {
+    background-color: #0056b3;
+}
