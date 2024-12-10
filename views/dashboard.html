@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/curso.css">
+    <link rel="stylesheet" href="../css/perfil.css">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Menu lateral -->
+        <nav class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="#" data-target="cadastro-curso">Cursos</a></li>
+                <li><a href="#" data-target="cadastro-perfil">Perfil</a></li>
+                <li><a href="#" data-target="usuarios">Usuários</a></li>
+                <li><a href="#" data-target="topico">Tópicos</a></li>
+                <li><a href="#" data-target="resposta">Respostas</a></li>
+            </ul>
+        </nav>
+
+        <!-- Conteúdo principal -->
+        <main class="content">
+            <header>
+                <h1>Bem-vindo à Dashboard</h1>
+                <div class="user-info">
+                    <span id="user-name">Usuário</span>
+                    <button id="logoutBtn">Sair</button>
+                </div>
+            </header>
+
+            <!-- Seções dinâmicas -->
+            <section id="cadastro-curso" class="hidden">
+                <h2>Cadastrar Cursos</h2>
+                <form id="form-cadastro-curso" class="form-inline">
+                    <!-- Campo para o nome do curso -->
+                    <div class="form-group">
+                        <label for="course-name">Nome do Curso:</label>
+                        <input type="text" id="course-name" placeholder="Digite o nome do curso" required>
+                    </div>
+                
+                    <!-- Campo para a categoria -->
+                    <div class="form-group">
+                        <label for="course-category">Categoria:</label>
+                        <select id="course-category" required>
+                            <option value="" disabled selected>Selecione a categoria</option>
+                            <option value="Programação">Programação</option>
+                            <option value="Banco de Dados">Banco de Dados</option>
+                            <option value="Desenvolvimento Pessoal">Desenvolvimento Pessoal</option>
+                        </select>
+                    </div>
+                
+                    <!-- Botão para salvar -->
+                    <button type="submit" id="btn-salvar-curso">Salvar</button>
+                </form>
+                <!-- Campo de busca -->
+                <br>
+                <h2>Buscar Cursos</h2>
+                <div class="search-container">
+                    <label for="search-name">Buscar por Nome:</label>
+                    <input type="text" id="search-name" placeholder="Digite o nome para buscar">
+                    
+                    <label for="search-category">Buscar por Categoria:</label>
+                    <select id="search-category">
+                        <option value="" selected>Todas</option>
+                        <option value="Programação">Programação</option>
+                        <option value="Banco de Dados">Banco de Dados</option>
+                        <option value="Desenvolvimento Pessoal">Desenvolvimento Pessoal</option>
+                    </select>
+                    
+                    <button id="btn-search-curso">Buscar</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Alterar</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cursos-lista">
+                        <!-- Os cursos serão inseridos aqui dinamicamente -->
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Seção de Perfil -->
+            <section id="cadastro-perfil" class="hidden">
+                <h2>Cadastrar Perfil</h2>
+                <form id="form-cadastro-perfil" class="form-inline">
+                    <!-- Campo para o nome do usuário -->
+                    <div class="form-group">
+                        <label for="profile-name">Nome:</label>
+                        <input type="text" id="profile-name" placeholder="Digite seu nome" required>
+                    </div>
+                    <!-- Botão para salvar -->
+                    <button type="submit" id="btn-salvar-perfil">Salvar</button>
+                </form>
+                <br>
+                <h2>Buscar Perfil</h2>
+                <div class="search-container">
+                    <!-- Campo para buscar por nome -->
+                    <label for="search-profile-name">Buscar por Nome:</label>
+                    <input type="text" id="search-profile-name" placeholder="Digite o nome para buscar">
+                    
+                    <!-- Botão para buscar -->
+                    <button id="btn-search-perfil">Buscar</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Alterar</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="perfis-lista">
+                        <!-- Os perfis serão inseridos aqui dinamicamente -->
+                    </tbody>
+                </table>
+            </section>
+
+
+            <section id="usuarios" class="hidden">
+                <h2>Usuários</h2>
+                <p>Gerenciamento de usuários.</p>
+            </section>
+
+            <section id="topico" class="hidden">
+                <h2>Tópico</h2>
+                <p>Gerenciamento de tópicos do fórum.</p>
+            </section>
+
+            <section id="resposta" class="hidden">
+                <h2>Resposta</h2>
+                <p>Gerenciamento de respostas dos tópicos.</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/curso.js"></script>
+    <script src="../js/perfil.js"></script>
+</body>
+</html>
